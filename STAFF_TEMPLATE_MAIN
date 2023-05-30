@@ -33,6 +33,7 @@ public class Main {
 
         if ((numEmp >= 1) && (numEmp <= plantilla.length)) {
             System.out.println(plantilla[numEmp-1].getDatos());
+            System.exit(0);
         } else {
             System.out.println("Numero erroneo");
         }
