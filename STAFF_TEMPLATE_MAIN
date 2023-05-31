@@ -18,26 +18,45 @@ public class Main {
 
 
         Scanner entrada = new Scanner(System.in);
-        System.out.println("Introduce el numero del que quieres saber los datos (1/2/3/4/5)");
+
+        System.out.println("A continuacion, vamos a mostrar los datos de l@s trabajadores que hay ahora mismo en la empresa\n (Pulse \"INTRO\" para continuar)");
+        entrada.nextLine();
+        System.out.println("La plantilla esta compuesta por: ");
 
         for(Empleado corredor:plantilla) {
             for(Empleado corredor2:plantilla) {
                 corredor2.setId();
-
             }
             System.out.println(corredor.getId()+" - " + corredor.getNombre());
         }
 
-        int numEmp = entrada.nextInt();
 
 
-        if ((numEmp >= 1) && (numEmp <= plantilla.length)) {
-            System.out.println(plantilla[numEmp-1].getDatos());
-            System.exit(0);
-        } else {
-            System.out.println("Numero erroneo");
+
+        boolean a = true;
+
+        while (a) {
+
+            System.out.println("Por favor, introduzca el numero del que quiere saber los datos (1/2/3/4/5)");
+            int numEmp = entrada.nextInt();
+
+            if ((numEmp >= 1) && (numEmp <= plantilla.length)) {
+                System.out.println(plantilla[numEmp-1].getDatos()+"\n");
+                System.out.println("Presione \"S\" si desea continuar explorando los datos de la plantilla\n De lo contrario, presione \"N\". Gracias");
+                String sn = entrada.next();
+                
+                if(sn.equalsIgnoreCase("n")) {
+                    System.out.println("Hasta pronto!");
+                    System.exit(0);
+                }
+
+            } else {
+                System.out.println("Numero erroneo...");
+
+            }
+
+
         }
-
 
 
 
@@ -76,12 +95,13 @@ class Empleado implements Comparable {
         return sueldo;
     }
     public int getId() {
-
         return id;
     }
+
     public void setId() {
         id++;
     }
+
     public String getNombre() {
 
         return nombre;
